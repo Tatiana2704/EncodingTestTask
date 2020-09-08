@@ -9,6 +9,7 @@ public class MainPage {
 
     public String mainURL = "https://api.encoding.com/";
     public static WebDriver driver;
+    public int timeoutIntervalSec = 3;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -18,13 +19,14 @@ public class MainPage {
     //to enter text in search field
     public void enterSearch(String strSearchInput) {
         driver.findElement(By.className("searchbox")).click();
-        driver.findElement(By.xpath("//input[@type='search']")).sendKeys("getStatus");
+        driver.findElement(By.xpath("//input[@type='search']")).sendKeys(strSearchInput);
     }
 
     //to select result form list (value should be in list mandatory)
     public void selectSearchResult(String strSearchResult) throws InterruptedException {
         driver.findElement(By.xpath("//div[@class='SearchResults-list']/a/header[@title='(GET) " + strSearchResult + "']")).click();
-        TimeUnit.SECONDS.sleep(3);
+        //to wait loading
+        TimeUnit.SECONDS.sleep(timeoutIntervalSec);
     }
 
     //to get Json from section Response
@@ -32,7 +34,8 @@ public class MainPage {
     public String getJsonResponseValueFromGetStatExt(String strJsonPath) {
 
         WebElement btnJsonForGetStatExt = driver.findElement(By.id("page-responses-getstatus-extended"))
-                .findElement(By.xpath("./descendant::div[@class='markdown-body']/descendant::div[@id='response']/parent::h2/following-sibling::div/descendant::button[contains(text(),'JSON')]"));
+                .findElement(By.xpath("./descendant::div[@class='markdown-body']/descendant::div[@id='response']" +
+                        "/parent::h2/following-sibling::div/descendant::button[contains(text(),'JSON')]"));
         if (!btnJsonForGetStatExt.getAttribute("class").contains("active"))
             btnJsonForGetStatExt.click();
 

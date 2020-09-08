@@ -13,7 +13,7 @@ public class DriverManager {
 
     private WebDriver driver;
 
-    public WebDriver getDriver() throws MalformedURLException {
+    public WebDriver getDriver() {
 
         if (driver == null) {
             if ("chrome".equalsIgnoreCase(browserName)) {

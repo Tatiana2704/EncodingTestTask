@@ -11,9 +11,8 @@ public class ParseJson {
 
         JSONArray arr = json.getJSONArray(subStr[0]);
 
-        for (int i = 1; i < subStr.length - 1; i++) {
-            arr = getFutureArray(arr,subStr[i]);
-        }
+        for (int i = 1; i < subStr.length - 1; i++)
+            arr = getNestedArray(arr,subStr[i]);
 
         String result = null;
         for (int i = 0; i < arr.length(); i++)
@@ -23,8 +22,8 @@ public class ParseJson {
 
     }
 
-    //to get future json array for next step
-    public JSONArray getFutureArray(JSONArray arr, String arrayName) {
+    //to get nested json array with arrayName for next step
+    public JSONArray getNestedArray(JSONArray arr, String arrayName) {
         JSONArray resArr = null;
         for (int i = 0; i < arr.length(); i++)
             resArr = arr.getJSONObject(i).getJSONArray(arrayName);

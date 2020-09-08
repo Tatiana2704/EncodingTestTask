@@ -47,7 +47,6 @@ public class Tests {
     }
 
 
-
     @Test
     public void Test2(){
 
@@ -59,7 +58,7 @@ public class Tests {
                 .body("response.status",equalTo("Ok"))
                 .body("response.incident_count.lastYear",equalTo("1"))
                 .extract().path("response.uptime");
-        Assert.assertTrue(TimeUnit.SECONDS.toDays(Integer.parseInt(uptimeSecondsXml))>1,"Uptime for format xml is less or equal one day");
+        Assert.assertTrue(TimeUnit.SECONDS.toDays(Integer.parseInt(uptimeSecondsXml)) > 1,"Uptime for format xml is less or equal one day");
 
         //to check json format
         Response response = get(path + "json");
@@ -67,6 +66,6 @@ public class Tests {
         Assert.assertEquals(response.jsonPath().get("status"),"Ok");
         Assert.assertEquals(response.jsonPath().get("incident_count.lastYear"),"1");
         Integer uptimeSecondsJson = Integer.parseInt(response.jsonPath().get("uptime").toString());
-        Assert.assertTrue(TimeUnit.SECONDS.toDays(uptimeSecondsJson)>1,"Uptime for format json is less or equal one day");
+        Assert.assertTrue(TimeUnit.SECONDS.toDays(uptimeSecondsJson) > 1,"Uptime for format json is less or equal one day");
     }
 }
