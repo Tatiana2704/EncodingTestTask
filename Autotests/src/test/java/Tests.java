@@ -1,28 +1,12 @@
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.apache.http.HttpStatus;
-import org.hamcrest.Matcher;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.json.Json;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.concurrent.TimeUnit;
-
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
